@@ -14,8 +14,13 @@ console.log("http server listening on %d", port)
 var wss = new WebSocketServer({server: server})
 console.log("websocket server created")
 
+wss.on("error",function(){
+	console.log(arguments)
+})
+
 wss.on("connection", function(ws) {
   var id = setInterval(function() {
+  	console.log("sinding not get?")
     ws.send(JSON.stringify(new Date()), function() {  })
   }, 1000)
 
