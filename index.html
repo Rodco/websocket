@@ -20,6 +20,11 @@
     <script>
       var host = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(host);
+
+ws.onerror = function(){ console.log(arguments) }
+
+ws.onopen = function(){ console.log(arguments) }
+
       ws.onmessage = function (event) {
         var li = document.createElement('li');
         li.innerHTML = JSON.parse(event.data);
